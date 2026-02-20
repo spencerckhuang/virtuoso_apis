@@ -11,6 +11,8 @@ app = Flask(__name__)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
+THRESHOLD = 0.5
+
 # ---- Model Loader ----
 def load_model(weights_path):
     model = models.resnet101(pretrained=False)
@@ -60,7 +62,7 @@ def predict():
         output = model(tensor)
         prob = torch.sigmoid(output).item()
 
-    label = "COMPLETE" if prob > 0.5 else "INCOMPLETE"
+    label = "COMPLETE" if prob > THRESHOLD else "INCOMPLETE"
 
     return jsonify({
         "task": task,
