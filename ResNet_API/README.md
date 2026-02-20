@@ -1,3 +1,5 @@
+(README and `virtuoso_resnet_api.py` backbone generated using AI, and fine-tuned afterwards by a human)
+
 # Flask Image Classification API
 
 A simple Flask API that:
